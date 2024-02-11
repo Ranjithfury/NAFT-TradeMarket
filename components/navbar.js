@@ -9,7 +9,7 @@ const Navbar = () => {
     <nav className={styles.navbar}>
       <div className={styles.logo}>
         <Link href="/">
-        <img src="/images/logo.png" alt="Logo" />
+        <img src="/images/logo.png" alt="Logo" width="85%" height="auto" display="block"/>
         </Link>
       </div>
       <ul className={styles.menu}>

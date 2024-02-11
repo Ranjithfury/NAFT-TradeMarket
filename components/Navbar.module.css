@@ -9,7 +9,8 @@
 }
 
 .logo {
-  margin-right: 0px; /* Adjust as needed */
+  margin-right: 0px;
+   /* Adjust as needed */
 }
 
 .menu {
@@ -59,4 +60,5 @@
 .navbar ul li a {
   color: #fff;
   text-decoration: none;
+  display:block;
 }
