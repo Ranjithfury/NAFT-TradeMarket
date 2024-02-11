@@ -1,0 +1,24 @@
+body{
+    background-color: #030303;
+}
+/* styles/global.css */
+
+.container {
+    max-width: 1150px;
+    margin: auto;
+    padding: 0 50px;
+}
+
+@media (max-width: 1199px) {
+    .container {
+        max-width: 1150px;
+    }
+}
+
+@media (max-width: 899px) {
+    .container {
+        max-width: 850px;
+    }
+}
+
+  
