@@ -2,16 +2,39 @@ import React from 'react';
 import Footer from "../components/footer/Footer"
 import Connect from '../components/Connect';
 import Web3ModalProvider from '../contexts/Web3ModalProvider';
+import { Grid } from '@mui/material';
+import NewProduct from '../components/NewProduct';
+
 
 const HomePage = () => {
   return (
     <div>
-          <Web3ModalProvider>
-            <Connect />
-            </Web3ModalProvider>
-              <h1 style={{ color: 'white' }}>Welcome to Next.js!</h1>
-              <p style={{ color: 'white' }}>This is the home page.</p>
-              <Footer/>
+      <div className="line"></div>
+    <div class="container">
+    <Grid container spacing={2} style={{ padding: '100px 0' }}>
+      <Grid item xs={8}lg={6} className="hero">
+
+              <h1 style={{ color: 'white' }}>Invest In Digital Assets</h1>
+              <h1 style={{ color: 'white' }}>Buy/Sell your <span className="heroTitleSpan">NFT</span></h1>
+              <h1 style={{ color: 'white' }}>Ownership</h1>
+              <p style={{ color: 'white' }}>Discover, Invest, Collect :</p>
+              <p style={{ color: 'white' }}>Your Journey into Digital Ownership Begins With Us</p>
+
+        <Web3ModalProvider>
+         <Connect />
+      </Web3ModalProvider>
+      <button className="btnsec">Explore Now</button>
+      </Grid>
+      <Grid item xs={8}lg={6}>  
+        {/* Images go here */}
+        <img src="/image1.jpg" alt="Image 1" />
+        <img src="/image2.jpg" alt="Image 2" />
+      </Grid>
+    </Grid>
+    
+    </div>
+    <NewProduct/>
+      <Footer/>
     </div>
   );
 };

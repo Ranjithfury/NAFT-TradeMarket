@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
   const showNavbar = !excludeNavbarFromPages.includes(router.pathname);
 
   return (
-    <div className="container">
+    <div >
       {showNavbar && <Navbar />}
       {children}
     </div>

@@ -1,0 +1,42 @@
+
+
+/* components/Card.module.css */
+.card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 250px;
+    margin-bottom: 20px;
+  }
+  
+.cardImg {
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+.cardBody {
+    padding: 10px;
+  }
+  
+.cardTitle {
+    margin: 0;
+  }
+  
+.cardPrice {
+    margin: 5px 0;
+  }
+  
+.buyButton {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+.buyButton:hover {
+    background-color: #0056b3;
+  }
+  

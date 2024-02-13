@@ -10,7 +10,7 @@ export const inter = Inter({
 export const roboto_mono = Roboto({
   subsets: ['latin'],
   display: 'swap',
-  weight: ["100","500","700"],
+  weight: ["100","500","700","900"],
 })
 
 
