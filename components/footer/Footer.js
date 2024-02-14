@@ -13,7 +13,7 @@ const Footer = () => {
               <div className={style.jump}>
                 <img src={`${process.env.PUBLIC_URL}/Users/admin/Documents/nft /NAFT-TradeMarket/public/images/logo.png`} alt="Logo" width="110" height="50" />
               </div>
-              <p>OUR goal</p>
+              <p className={style.para}>OUR goal</p>
               <p className={style.join}><strong>Join the community</strong></p>
               <div className={style.socialLinks}>
                 <a href="#"><FontAwesomeIcon icon={faDiscord} /></a>
@@ -58,7 +58,7 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-      <div className={style.copyright}>
+      <div className={style.copyrightLink}>
         <p>© 2024 <a href="#">@Team bravo</a> all rights reserved</p>
       </div>
     </div>

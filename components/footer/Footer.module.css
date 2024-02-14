@@ -41,7 +41,7 @@
   height: 50px;
 }
 
-/* Assuming p styles are specifically for paragraphs within the footer component */
+
 .p {
   color: #b8b2b2;
 }
@@ -131,8 +131,13 @@
 /* Copyright specific styles */
 .copyright {
   text-align: center;
-  padding: 25px;
+  padding: 200px;
   background: rgb(39, 38, 38);
-  font-weight: 300;
+  font-weight: 400;
 }
 
+.copyrightLink a,
+.copyrightLink a:hover {
+  color: gold;
+  text-decoration: none;
+}
