@@ -1,16 +1,19 @@
 
 
 const hre = require("hardhat");
+const dotenv = require("dotenv/config");
+
+console.log(process.env.DUMMY_WALLET_ADDRESS);
 
 async function main() {
   // make sure to change the name of your contract
-  const NFT = await hre.ethers.getContractFactory("NFT");
+  const NFT = await hre.ethers.getContractFactory("User");
   // 4 in the bracket is to give the value to the parameter(_pizzaSize) in the constructor of the smart contract contract.
   const nft = await NFT.deploy();
 
   await nft.waitForDeployment();
 
-  console.log("NFT contract address:", await nft.getAddress());
+  console.log("User contract address:", await nft.getAddress());
 }
 
 // Call the main function and catch if there is any error

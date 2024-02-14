@@ -117,6 +117,7 @@ const Web3ModalProvider = ({ children }) => {
     setConnected(true);
     
     console.log(_account);
+
     } catch(error) {
       console.error("Make sure to authenticate your XDC Pay before connecting Wallet");
     }

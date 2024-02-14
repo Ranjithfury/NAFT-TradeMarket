@@ -19,16 +19,18 @@ const Connect = () => {
       const handleConnectWallet = useCallback(() => { // Callback to handle Wallet Connection
         console.log("called");
         connect();
+
       }, [connect]);
     
       const handleDisconnectWallet = useCallback(() => {  // Callback to handle Wallet Disconnection
         disconnect();
+        window.location.reload();
       }, [disconnect]);
 
     return (
      !account ? 
-        (<button className={styles.signupButton} onClick={handleConnectWallet}>Connect Wallet</button>):  // If no account was found, it shows this
-        (<button className={styles.signupButton} onClick={handleDisconnectWallet}>{ellipseAddress(account)}</button>) // Else it shows the Address
+        (<button className={styles.signupButton} onClick={() => {handleConnectWallet()}}>Connect Wallet</button>):  // If no account was found, it shows this
+        (<button className={styles.signupButton} onClick={() => {handleDisconnectWallet(), window.location.reload()}}>{ellipseAddress(account)}</button>) // Else it shows the Address
     
     )
 }

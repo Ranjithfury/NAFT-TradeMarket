@@ -1,12 +1,18 @@
-import React from 'react';
+import React, {useState, useContext} from 'react';
 import Footer from "../components/footer/Footer"
 import Connect from '../components/Connect';
+import { Web3ModalContext } from '../contexts/Web3ModalProvider';
 import Web3ModalProvider from '../contexts/Web3ModalProvider';
 import { Grid } from '@mui/material';
 import NewProduct from '../components/NewProduct';
 
 
 const HomePage = () => {
+
+  const { account, connect, disconnect } = useContext(Web3ModalContext);
+
+
+
   return (
     <div>
       <div className="line"></div>
@@ -20,9 +26,10 @@ const HomePage = () => {
               <p style={{ color: 'white' }}>Discover, Invest, Collect :</p>
               <p style={{ color: 'white' }}>Your Journey into Digital Ownership Begins With Us</p>
 
-        <Web3ModalProvider>
+         <Web3ModalProvider>
          <Connect />
-      </Web3ModalProvider>
+      </Web3ModalProvider> : 
+      
       <button className="btnsec">Explore Now</button>
       </Grid>
       <Grid item xs={8}lg={6}>  

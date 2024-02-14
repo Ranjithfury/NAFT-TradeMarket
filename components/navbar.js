@@ -1,13 +1,21 @@
 // components/navbar.js
 
 import styles from './Navbar.module.css';
+import { Web3ModalContext } from '../contexts/Web3ModalProvider';
+import { useContext } from 'react';
 import Link from 'next/link';
 import Connect from '../components/Connect';
 import Web3ModalProvider from '../contexts/Web3ModalProvider';
 
 
 
+
+
 const Navbar = () => {
+
+
+  console.log(Web3ModalContext.account);
+
   return (
     <div class="container">
     <nav className={styles.navbar}>
@@ -36,5 +44,7 @@ const Navbar = () => {
     
   );
 };
+
+
 
 export default Navbar;
