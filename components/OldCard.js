@@ -12,12 +12,12 @@ const Card = ({ imgSrc, title, price, onBuy ,left }) => {
       <div className={styles.cardBody}>
         <h4 className={styles.cardTitle}>{title}</h4>
         <div className={styles.row}>
-        <h5>Current IPO</h5>
+        <h5>Current BID</h5>
         <p className={styles.cardPrice}>{price} <span className='heroTitleSpan'>XDC</span></p>
         </div>
         <div className={styles.row}>
-        <p>{left} Tokens left  </p>
-        <button className={styles.buyButton} onClick={onBuy}>Buy</button>
+        <p>{left} Tokens Offered </p>
+        <button className={styles.buyButton} onClick={onBuy}>Bid</button>
         </div>
       </div>
     </div>

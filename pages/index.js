@@ -5,6 +5,7 @@ import { Web3ModalContext } from '../contexts/Web3ModalProvider';
 import Web3ModalProvider from '../contexts/Web3ModalProvider';
 import { Grid } from '@mui/material';
 import NewProduct from '../components/NewProduct';
+import Product from '../components/Product';
 
 
 const HomePage = () => {
@@ -16,7 +17,8 @@ const HomePage = () => {
   return (
     <div>
       <div className="line"></div>
-    <div class="container">
+    <div class="container"style={{height:"38vw"}}
+>
     <Grid container spacing={2} style={{ padding: '100px 0' }}>
       <Grid item xs={8}lg={6} className="hero">
 
@@ -33,14 +35,18 @@ const HomePage = () => {
       <button className="btnsec">Explore Now</button>
       </Grid>
       <Grid item xs={8}lg={6}>  
-        {/* Images go here */}
-        <img src="/image1.jpg" alt="Image 1" />
-        <img src="/image2.jpg" alt="Image 2" />
+      <img 
+  src="/images/hero.png" 
+  alt="Image 1"  
+  className="image-container"
+/>
+
       </Grid>
     </Grid>
     
     </div>
     <NewProduct/>
+    <Product/>
       <Footer/>
     </div>
   );

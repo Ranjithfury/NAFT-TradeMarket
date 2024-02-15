@@ -8,8 +8,13 @@
 
 .logo {
   margin-right: 30px;
-   /* Adjust as needed */
+  transition: transform 0.3s ease; 
 }
+
+.logo:hover {
+  transform: scale(1.04); 
+}
+
 
 .menu {
   display: flex;
@@ -52,11 +57,15 @@
   border-radius: 4px;
   text-decoration: none;
   text-transform: uppercase;
+  transition: transform 0.3s ease; 
+
 
 }
 
 .signupButton:hover {
   background-color: hsl(47, 100%, 55%);
+  transform: scale(1.03); 
+
 }
 
 .navbar ul {
@@ -68,6 +77,10 @@
 .navbar ul li {
   display: inline;
   margin-right: 1rem;
+  transition: transform 0.3s ease; 
+}
+.navbar ul li:hover{
+  transform: scale(1.1); 
 }
 
 .navbar ul li a {
