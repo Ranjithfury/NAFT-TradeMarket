@@ -44,7 +44,13 @@ mongoose
   
   app.post("/api/mintNFT", async(req, res) => {
     try {
+      const totTokens = req.body.tokens;
+      const nftPrice = req.body.price;
+      const nftData = req.body.nftData;
+      const nftDesc = req.body.description;
+      const nftTitle = req.body.title;
 
+      // const mintInContract  = await nftContract.mintNFT() // Need to get hold of Account ID in order to proceed further
 
     } catch(error) {
       console.error("Error in minting NFT");

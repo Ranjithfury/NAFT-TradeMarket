@@ -10,7 +10,7 @@ import NewProduct from '../components/NewProduct';
 const HomePage = () => {
 
   const { account, connect, disconnect } = useContext(Web3ModalContext);
-
+  console.log(account);
 
 
   return (

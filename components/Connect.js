@@ -1,4 +1,4 @@
-import {useContext, useCallback} from "react";
+import {useContext, useCallback, createContext} from "react";
 import { Web3ModalContext } from '../contexts/Web3ModalProvider';
 import styles from "../components/Navbar.module.css";
 
@@ -13,6 +13,7 @@ const Connect = () => {
     
       const { account, connect, disconnect } = useContext(Web3ModalContext);
     
+
       console.log(account);
     
       console.log(account);

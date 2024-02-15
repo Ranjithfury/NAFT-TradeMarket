@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useState, useCallback} from "react";
 import { Web3ModalContext } from '../../contexts/Web3ModalProvider';
 import Web3ModalProvider from "../../contexts/Web3ModalProvider";
 import Connect from "../../components/Connect";
@@ -12,14 +12,14 @@ const Create = () => {
     const [token, setToken] = useState(0);
     const [data, setData] = useState();
 
-    const {account} = useContext(Web3ModalContext);
-
+    const { account, connect, disconnect } = useContext(Web3ModalContext);
+    
     console.log(account);
 
 
     async function mintNFT(tit, des, pri, tok, data) {
         try {
-            const response = await axios.post("/api/mintNFT", {
+            const response = await axios.post("http://localhost:3001/api/mintNFT", {
                 title: tit,
                 description: des,
                 price: pri,
@@ -47,45 +47,48 @@ const Create = () => {
                 <div style={{marginTop: "30px"}}>
                     <h2 style={{color: "white", display: "flex", justifyContent: "flex-start", marginLeft: "15%"}}>Title</h2>
                     <div className={styles.actions}>
-                    <input name="nftTitle" onChange={(e) => setTitle(e.target.value)} type="text" placeholder="Title" className={styles.feild} style={{width: "70%", marginLeft: "15%"}} />
+                    <input name="nftTitle" onChange={(e) => setTitle(e.target.value)} type="text" placeholder="Title" className={styles.feild} style={{width: "70%", marginLeft: "15%"}} required/>
                     </div>
                 </div>
 
                 <div style={{marginTop: "30px"}}>
                     <h2 style={{color: "white", display: "flex", justifyContent: "flex-start", marginLeft: "15%"}}>Description</h2>
                     <div className={styles.actions}>
-                    <input name="nftDesc" onChange={(e) => setDesc(e.target.value)} type="text" placeholder="Description" className={styles.feild} style={{width: "70%", marginLeft: "15%"}} />
+                    <input name="nftDesc" onChange={(e) => setDesc(e.target.value)} type="text" placeholder="Description" className={styles.feild} style={{width: "70%", marginLeft: "15%"}} required/>
                     </div>
                 </div>
 
                 <div style={{marginTop: "30px"}}>
                     <h2 style={{color: "white", display: "flex", justifyContent: "flex-start", marginLeft: "15%"}}>Token Price</h2>
                     <div className={styles.actions}>
-                    <input name="nftPrice" onChange={(e) => setPrice(e.target.value)} type="number" placeholder="Token Price (in XDC)" className={styles.feild} style={{width: "70%", marginLeft: "15%"}} />
+                    <input name="nftPrice" onChange={(e) => setPrice(e.target.value)} type="number" placeholder="Token Price (in XDC)" className={styles.feild} style={{width: "70%", marginLeft: "15%"}} required/>
                     </div>
                 </div>
 
                 <div style={{marginTop: "30px"}}>
                     <h2 style={{color: "white", display: "flex", justifyContent: "flex-start", marginLeft: "15%"}}>Total Tokens</h2>
                     <div className={styles.actions}>
-                    <input name="nftTokens" onChange={(e) => setToken(e.target.value)} type="number" placeholder="Total Tokens" className={styles.feild} style={{width: "70%", marginLeft: "15%"}} />
+                    <input name="nftTokens" onChange={(e) => setToken(e.target.value)} type="number" placeholder="Total Tokens" className={styles.feild} style={{width: "70%", marginLeft: "15%"}} required/>
                     </div>
                 </div>
 
                 <div style={{marginTop: "30px"}}>
                     <h2 style={{color: "white", display: "flex", justifyContent: "flex-start", marginLeft: "15%"}}>Upload NFT data</h2>
                     <div className={styles.actions}>
-                    <input name="nftData" onChange={(e) => setData(e.target.value)}  type="file" placeholder="Search" className={styles.feild} style={{width: "70%", marginLeft: "15%"}} />
+                    <input name="nftData" onChange={(e) => setData(e.target.value)}  type="file" placeholder="Search" className={styles.feild} style={{width: "70%", marginLeft: "15%"}} required/>
                     </div>
                 </div>
 
                 <div>
-                    <button className={styles.signupButton} style={{ marginTop: "50px", width: "10%", marginLeft: "45%", marginRight: "45%" }} onClick={() => console.log("HI")}>Mint</button>
+                    <button className={styles.signupButton} style={{ marginTop: "50px", width: "10%", marginLeft: "45%", marginRight: "45%" }} onClick={() => mintNFT(title, desc, price, token, data)}>Mint</button>
                 </div>
             </div>
         </div>
         </Web3ModalProvider>
     )
+
 }
+
+
 
 export default Create;
