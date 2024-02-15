@@ -11,9 +11,9 @@ const Footer = () => {
           <div className={style.row}>
             <div className={style.footerCol}>
               <div className={style.jump}>
-                <img src={`${process.env.PUBLIC_URL}/Users/admin/Documents/nft /NAFT-TradeMarket/public/images/logo.png`} alt="Logo" width="110" height="50" />
+                <img src="images/logo.png" alt="Logo" width="110" height="50" />
               </div>
-              <p className={style.para}>OUR goal</p>
+              <p className={style.para}>NFT trading has revolutionized the digital ownership landscape, enabling creators and collectors to buy, sell, and exchange unique digital assets securely on the blockchain.</p>
               <p className={style.join}><strong>Join the community</strong></p>
               <div className={style.socialLinks}>
                 <a href="#"><FontAwesomeIcon icon={faDiscord} /></a>
@@ -58,8 +58,8 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-      <div className={style.copyrightLink}>
-        <p>© 2024 <a href="#">@Team bravo</a> all rights reserved</p>
+      <div className={style.copyright}>
+        <p className={style.copyrightLink}>© 2024 <a href="#">@Team bravo</a> all rights reserved</p>
       </div>
     </div>
   );
