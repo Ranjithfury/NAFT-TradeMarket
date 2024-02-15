@@ -6,6 +6,7 @@ import Web3ModalProvider from '../contexts/Web3ModalProvider';
 import { Grid } from '@mui/material';
 import NewProduct from '../components/NewProduct';
 import Product from '../components/Product';
+import AboutUs from '../components/About';
 
 
 const HomePage = () => {
@@ -46,6 +47,7 @@ const HomePage = () => {
     
     </div>
     <NewProduct/>
+    <AboutUs/>
     <Product/>
       <Footer/>
     </div>
