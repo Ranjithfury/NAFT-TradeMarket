@@ -3,7 +3,6 @@
 const hre = require("hardhat");
 const dotenv = require("dotenv/config");
 
-console.log(process.env.DUMMY_WALLET_ADDRESS);
 
 async function main() {
   // make sure to change the name of your contract

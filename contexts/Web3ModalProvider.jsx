@@ -1,7 +1,11 @@
-import { createContext, useCallback, useEffect, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useState } from "react";
 import Web3Modal from "web3modal";
 import Web3 from "web3";
 import { providerOptions } from "xdcpay-connect";
+
+
+
+
 
 const IWeb3ModalContext = {
   web3: null,
@@ -22,6 +26,8 @@ export const Web3ModalContext = createContext({
   networkId: null,
   connected: false,
 });
+
+
 
 const Web3ModalProvider = ({ children }) => {
   const [web3Modal, setWeb3Modal] = useState(null);
@@ -115,6 +121,8 @@ const Web3ModalProvider = ({ children }) => {
     setNetworkId(Number(_networkId));
     setChainId(Number(_chainId));
     setConnected(true);
+
+    
     
     console.log(_account);
 
