@@ -1,6 +1,8 @@
 import Layout from '../components/Layout';
 import '../styles/global.css';
 import { Inter, Roboto } from 'next/font/google'
+import Head from 'next/head';
+
  
 export const inter = Inter({
   subsets: ['latin'],
@@ -16,11 +18,17 @@ export const roboto_mono = Roboto({
 
 function MyApp({ Component, pageProps }) {
   return (
+    <>
+    <Head>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <title>NAFT-TradeMarket</title>
+  </Head>
     <main className={inter.className}>
     <Layout>
       <Component {...pageProps} />
     </Layout>
     </main>
+    </>
   );
 }
 

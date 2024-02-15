@@ -84,8 +84,10 @@
     text-decoration: none;
     text-transform: uppercase;  
     margin-left: 50;
+    transition: transform 0.3s ease; 
   }
   
   .signupButton:hover {
     background-color: hsl(47, 100%, 55%);
+    transform: scale(1.03); 
   }  

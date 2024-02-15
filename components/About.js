@@ -4,8 +4,8 @@ const AboutUs = () => {
     return (
       <div className="container">
         <h2 className="h2 about-title">Create and sell your NFTs</h2>
-        <Grid container spacing={2} style={{color: "white",marginBottom:"100px"}}>
-        <Grid item xs={12} sm={6} md={4} lg={3} >
+        <Grid container spacing={2} style={{color: "white",marginBottom:"140px"}}>
+        <Grid item xs={12} sm={6} md={4} lg={3}  >
           <li className="about-item">
             <div className="about-card">
               <div className="card-number">01</div>
