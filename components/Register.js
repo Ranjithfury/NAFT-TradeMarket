@@ -1,41 +1,58 @@
-import React, {useContext, useState, useCallback} from "react";
-import { Web3ModalContext } from '../../contexts/Web3ModalProvider';
-import Web3ModalProvider from "../../contexts/Web3ModalProvider";
-import Register from "../../components/Register";
+import {useContext, useCallback, createContext, useState} from "react";
+import { Web3ModalContext } from '../contexts/Web3ModalProvider';
+import Web3ModalProvider from "../contexts/Web3ModalProvider";
 import axios from "axios";
+import Connect from "./Connect";
+import styles from "../components/Navbar.module.css";
 
-const Create = () => {
-   /* const [title, setTitle] = useState();
+
+const Register = () => {
+    const [title, setTitle] = useState();
     const [desc, setDesc] = useState();
     const [price, setPrice] = useState(0);
     const [token, setToken] = useState(0);
     const [data, setData] = useState();
 
     const { account, connect, disconnect } = useContext(Web3ModalContext);
-    
-    console.log(account);
 
-
-    async function mintNFT(tit, des, pri, tok, data) {
+    async function mintNFT(tit, des, pri, tok, data, acc) {
+        console.log("Clicked");
+        console.log(acc);
         try {
             const response = await axios.post("http://localhost:3001/api/mintNFT", {
                 title: tit,
                 description: des,
                 price: pri,
                 tokens: tok,
-                nftData: data
+                nftData: data,
+                owner: acc
             });
+
         } catch(error) {
             console.log("Failed to send NFT data: " + error);
         }
-    } */
+    }
+
+    function ellipseAddress(
+        address,
+        width) {
+        return `${address?.slice(0, width + 2)}...${address?.slice(-width)}`;
+      }
+    
+
+    
+      const handleConnectWallet = useCallback(() => { // Callback to handle Wallet Connection
+        console.log("called");
+        connect();
+
+      }, [connect]);
+    
+      const handleDisconnectWallet = useCallback(() => {  // Callback to handle Wallet Disconnection
+        disconnect();
+        window.location.reload();
+      }, [disconnect]);
 
     return (
-        <Register />
-
-    )
-
-    /*return (
         <Web3ModalProvider>
 
         <div>
@@ -44,7 +61,7 @@ const Create = () => {
                 <div>
                     <h2 style={{color: "white", display: "flex", justifyContent: "center"}}>Your Wallet Address : <span style={{color:"hsl(47, 100%, 49%)", marginLeft: "20px", marginBottom: "20px"}}><Web3ModalProvider>
                     
-            <Register />
+            <Connect />
             
           </Web3ModalProvider></span>   </h2>
                 </div>
@@ -83,16 +100,14 @@ const Create = () => {
                     </div>
                 </div>
 
-                <div>
-                    <button className={styles.signupButton} style={{ marginTop: "50px", width: "10%", marginLeft: "45%", marginRight: "45%" }} onClick={() => mintNFT(title, desc, price, token, data)}>Mint</button>
-                </div>
+               { account && <div>
+                    <button className={styles.signupButton} style={{ marginTop: "50px", width: "10%", marginLeft: "45%", marginRight: "45%" }} onClick={() => mintNFT(title, desc, price, token, data, account)}>Mint</button>
+                </div>}
             </div>
         </div>
         </Web3ModalProvider>
-    )*/
-
+    )
 }
 
 
-
-export default Create;
+export default Register;

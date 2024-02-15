@@ -49,8 +49,12 @@ mongoose
       const nftData = req.body.nftData;
       const nftDesc = req.body.description;
       const nftTitle = req.body.title;
+      const nftOwner = req.body.owner;
+
 
       // const mintInContract  = await nftContract.mintNFT() // Need to get hold of Account ID in order to proceed further
+
+      
 
     } catch(error) {
       console.error("Error in minting NFT");
