@@ -26,7 +26,7 @@ const nftSchema = new mongoose.Schema({
     },
 
     nftDesc: {
-        type: Number,
+        type: String,
         required: true,
     },
 

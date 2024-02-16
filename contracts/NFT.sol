@@ -18,8 +18,8 @@ contract NFT {
     function mintNFT(address payable _admin,address _ownerAddress, string memory _nftTitle, string memory _nftDescription, uint _price, uint _tokens, uint[] memory _data ) public {
         nfts.push(mintedNFT({owner: _ownerAddress, title: _nftTitle, description: _nftDescription, tokenPrice: _price, totalTokens: _tokens, nftData: _data}));
 
-        (bool success, ) = _admin.call{value: 5}("");
-        require(success, "Failed to send XDC Tokens");
+        /*(bool success, ) = _admin.call{value: 5}("");
+        require(success, "Failed to send XDC Tokens");*/
 
     }
 

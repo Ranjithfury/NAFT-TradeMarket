@@ -11,23 +11,40 @@ const Register = () => {
     const [desc, setDesc] = useState();
     const [price, setPrice] = useState(0);
     const [token, setToken] = useState(0);
-    const [data, setData] = useState();
+    const [data, setData] = useState([]);
 
     const { account, connect, disconnect } = useContext(Web3ModalContext);
 
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const arrayBuffer = e.target.result;
+          console.log(arrayBuffer);
+          setData(arrayBuffer);
+        };
+        reader.readAsArrayBuffer(file);
+      };
+
+    console.log(data);
+
     async function mintNFT(tit, des, pri, tok, data, acc) {
         console.log("Clicked");
-        console.log(acc);
+        console.log(data);
         try {
+
+
+            const nftImageByte = [...new Uint8Array(data)];
             const response = await axios.post("http://localhost:3001/api/mintNFT", {
                 title: tit,
                 description: des,
                 price: pri,
                 tokens: tok,
-                nftData: data,
+                nftData: nftImageByte,
                 owner: acc
             });
-
+            
+            window.location.href = "/";
         } catch(error) {
             console.log("Failed to send NFT data: " + error);
         }
@@ -96,7 +113,8 @@ const Register = () => {
                 <div style={{marginTop: "30px"}}>
                     <h2 style={{color: "white", display: "flex", justifyContent: "flex-start", marginLeft: "15%"}}>Upload NFT data</h2>
                     <div className={styles.actions}>
-                    <input name="nftData" onChange={(e) => setData(e.target.value)}  type="file" placeholder="Search" className={styles.feild} style={{width: "70%", marginLeft: "15%"}} required/>
+                    <input onChange={handleFileChange} accept="image/x-png,image/jpeg,image/gif,image/svg+xml,image/webp"
+ name="nftData"  type="file" placeholder="Search" className={styles.feild} style={{width: "70%", marginLeft: "15%"}} required/>
                     </div>
                 </div>
 

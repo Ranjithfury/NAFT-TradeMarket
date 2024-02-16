@@ -6,7 +6,7 @@ const dotenv = require("dotenv/config");
 
 async function main() {
   // make sure to change the name of your contract
-  const NFT = await hre.ethers.getContractFactory("User");
+  const NFT = await hre.ethers.getContractFactory("NFT");
   // 4 in the bracket is to give the value to the parameter(_pizzaSize) in the constructor of the smart contract contract.
   const nft = await NFT.deploy();
 

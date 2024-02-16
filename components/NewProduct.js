@@ -1,14 +1,37 @@
 // pages/index.js
-import React from 'react';
+import React, {useState, useEffect, useContext,} from 'react';
+import { Web3ModalContext } from '../contexts/Web3ModalProvider';
 import { Grid } from '@mui/material';
 import Card from './Card';
+import axios from "axios";
 import styles from './newProduct.module.css'; 
+
+
+// Get all NFTs that are bought with an API
 
 const NewProduct = () => {
   const handleBuy = () => {
     // Handle buy button click
     console.log('Buy button clicked');
   };
+
+  const {account} = useContext(Web3ModalContext);
+
+  const fetchMyNFT = async(account) => {
+    try {
+      const response = await axios.get("http://localhost:3001/api/yourNFTs", {params: {
+        address: account
+      }});
+    } catch(error) {
+      console.log("Unable to fetch your NFTs ", error);
+    }
+  }
+
+  useEffect(() => {
+    (async () => {
+      await fetchMyNFT(account);
+    })
+  }, [account]);
 
   return (
     <div style={{ backgroundColor: 'hsl(0, 0%, 7%)', width: '100%',padding: "120px 0" }}>

@@ -27,7 +27,7 @@ const Navbar = () => {
       <ul className={styles.menu}>
         <li><Link href="/">Home</Link></li>
         <li><Link href="/create-nft">Create</Link></li>
-        <li><Link href="#">Collections</Link></li>
+        <li><Link href="/my-nfts">Collections</Link></li>
         <li><Link href="#">About</Link></li>
         <li><Link href="#">Contact</Link></li>
         <li><Link href="#">Wallet</Link></li>

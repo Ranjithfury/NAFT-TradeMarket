@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const { ethers, JsonRpcProvider } = require("ethers");
 const mongoose = require('mongoose');
+const NFT = require("./schemas/NFT");
+const User = require("./schemas/User");
 const abiData = require("./abi.json");
 require("dotenv").config();
 
@@ -25,7 +27,7 @@ const userContract = new ethers.Contract(process.env.USER_CONTRACT_ADDRESS, abiD
 
 mongoose
   .connect(
-    "mongodb+srv://ranj74384:admin2020@demo.z8hcj5m.mongodb.net/",
+    "mongodb+srv://ranj74384:admin2020@demo.z8hcj5m.mongodb.net/market",
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -41,6 +43,35 @@ mongoose
   app.get('/api/example', (req, res) => {
     res.json({ message: 'This is an example API endpoint' });
   });
+
+  app.get("/api/yourNFTs", async(req, res) => {
+    try {
+
+      const address =  req.query.address;
+      let nftIDs = [];
+      let nftDetails = [];
+      console.log(address);
+
+      const thatUser = await User.findOne({walletAddress: address});
+      if(thatUser) {
+        thatUser.ownedNFTs.forEach((nft) => {
+        
+
+          nftIDs.push(nft.nftID);
+        })
+      }
+
+      const nfts = await NFT.find({nftID: nftIDs});
+      
+      res.send(nfts);
+      
+
+    } catch(error) {
+      console.log("Unable to fetch your NFTs ", error);
+    }
+  })
+
+
   
   app.post("/api/mintNFT", async(req, res) => {
     try {
@@ -51,13 +82,57 @@ mongoose
       const nftTitle = req.body.title;
       const nftOwner = req.body.owner;
 
+      console.log(nftData);
 
-      // const mintInContract  = await nftContract.mintNFT() // Need to get hold of Account ID in order to proceed further
+      const nfts = await NFT.find({});
 
-      
+      const insertNFT = await NFT.create({
+        nftID: nfts.length+1,
+        ownerAddress: nftOwner,
+        nftTitle: nftTitle,
+        nftDesc: nftDesc,
+        nftPrice: nftPrice,
+        nftTokens: totTokens, 
+        nftType: "Image",
+        nftData: nftData
+      });
+
+      insertNFT.save();
+
+      const checkUser = await User.findOne({walletAddress: nftOwner});
+      const allUser = await User.find({});
+      if(!checkUser) {
+
+        const newUser = await User.create({
+          userID: allUser.length+1,
+          walletAddress: nftOwner,
+          ownedNFTs: [ {
+            nftID: nfts.length+1,
+            tokens: totTokens,
+          }],
+          boughtNFTs: 1,
+        })
+
+        newUser.save();
+      } else {
+        console.log(checkUser);
+        const existingNFTs = checkUser.ownedNFTs
+
+        console.log(existingNFTs);
+        const modify = await User.updateOne({walletAddress: nftOwner}, {ownedNFTs: [...existingNFTs, {
+          nftID: nfts.length+1,
+          tokens: totTokens,
+        }]});
+
+
+      }
+
+      const mintInContract  = await nftContract.mintNFT(process.env.DUMMY_WALLET_ADDRESS,nftOwner, nftTitle, nftDesc, nftPrice, totTokens, nftData); // Need to get hold of Account ID in order to proceed further
+
+      console.log("NFT minted successfully");
 
     } catch(error) {
-      console.error("Error in minting NFT");
+      console.error("Error in minting NFT", error);
     }
   })
 

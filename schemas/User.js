@@ -3,10 +3,21 @@ const mongoose = require("mongoose");
 const userSchema = new mongoose.Schema({
     userID: {
         type: Number,
+        required: true,
+    },
+
+    walletAddress: {
+        type: String,
+        required: true,
     },
 
     ownedNFTs: {
-        type: [Number],
+        type: [
+            {
+                nftID: Number,
+                tokens: Number,
+            }
+        ],
     },
 
     boughtNFTs: {
